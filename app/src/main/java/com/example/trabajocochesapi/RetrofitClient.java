@@ -20,7 +20,7 @@ public class RetrofitClient {
                     .build();
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create()) //Cambia el json a java
                     .client(client)
                     .build();
         }

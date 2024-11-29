@@ -19,7 +19,7 @@ public class CocheEntity implements Serializable {
     //Lo necesita el room
     public CocheEntity() {
     }
-
+    //Este constructor sirve para coger los datos y compartirlos con la base de datos
     public CocheEntity(CochesResponse coches) {
         this.id = coches.getId();
         this.marca = coches.getMarca();

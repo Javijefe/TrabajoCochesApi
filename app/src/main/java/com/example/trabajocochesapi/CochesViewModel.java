@@ -34,34 +34,38 @@ public class CochesViewModel extends AndroidViewModel {
 
 
     }
-
+    /*
+      Obtiene la lista de coches desde la base de datos local.
+        Antes, asegura que los datos estén actualizados llamando a refreshDataTask().
+     */
     public LiveData<List<CocheEntity>> getCoches() {
         refreshDataTask();
         return cocheDAO.getCoches();
 
     }
 
-    public void  refreshDataTask()  {
-
-        CochesApiService apiService=RetrofitClient.getRetrofit().create(CochesApiService.class);
-        Call<List<CochesResponse>> call= apiService.getCochesList("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpwdXVxcGZ3eHppYm91Y2lhemRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE2NjEzMTAsImV4cCI6MjA0NzIzNzMxMH0.CbZHDaGU6ghxHzvb4qmHLJapPczmy-LWjL1P4EhU2Uw");
-
+    public void refreshDataTask() {
+        // Inicializa el servicio de la API mediante Retrofit.
+        CochesApiService apiService = RetrofitClient.getRetrofit().create(CochesApiService.class);
+        Call<List<CochesResponse>> call = apiService.getCochesList("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpwdXVxcGZ3eHppYm91Y2lhemRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE2NjEzMTAsImV4cCI6MjA0NzIzNzMxMH0.CbZHDaGU6ghxHzvb4qmHLJapPczmy-LWjL1P4EhU2Uw");
+        //Crea una llamada
         call.enqueue(new Callback<List<CochesResponse>>() {
+            //Aqui la ejecuta de forma asincrona
             @Override
             public void onResponse(Call<List<CochesResponse>> call, Response<List<CochesResponse>> response) {
                 List<CochesResponse> cochesResponse = response.body();
-
+            //Pasa los datos de la api a CocheEntity
                 ArrayList<CocheEntity> cocheEntities = new ArrayList<>();
-                for (CochesResponse cocheResponse:cochesResponse){
-                   cocheEntities.add( new CocheEntity(cocheResponse));
+                for (CochesResponse cocheResponse : cochesResponse) {
+                    cocheEntities.add(new CocheEntity(cocheResponse));
                 }
-
-                new Thread(()->cocheDAO.addCoches(cocheEntities));
+                //Aqui las inserto con un hilo
+                new Thread(() -> cocheDAO.addCoches(cocheEntities));
             }
 
             @Override
             public void onFailure(Call<List<CochesResponse>> call, Throwable t) {
-                Log.e(TAG,"error");
+                Log.e(TAG, "error");
             }
         });
     }

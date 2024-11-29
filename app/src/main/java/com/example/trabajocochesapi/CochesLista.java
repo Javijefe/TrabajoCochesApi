@@ -69,14 +69,15 @@ public class CochesLista extends AppCompatActivity {
     private void cocheService(){
         CochesApiService apiService= RetrofitClient.getRetrofit().create(CochesApiService.class);
 
+        //Aqui llama a la api
         Call<List<CochesResponse>> call= apiService.getCochesList("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpwdXVxcGZ3eHppYm91Y2lhemRsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzE2NjEzMTAsImV4cCI6MjA0NzIzNzMxMH0.CbZHDaGU6ghxHzvb4qmHLJapPczmy-LWjL1P4EhU2Uw");
         call.enqueue(new Callback<List<CochesResponse>>() {
             @Override
             public void onResponse(Call<List<CochesResponse>> call, Response<List<CochesResponse>> response) {
-               List<CochesResponse>  cochesResponse=response.body();
-               for (CochesResponse cochesResponse1:cochesResponse){
+               List<CochesResponse>  cochesResponse=response.body(); //Aqui coge la respuesta
+               for (CochesResponse cochesResponse1:cochesResponse){  //Aqui lo convierto en coches para
                   Coches coche= new Coches(cochesResponse1);
-                   cochesList.add(coche);
+                   cochesList.add(coche);                              //poder añadirlos a la lista
                }
 
                 adapter.notifyDataSetChanged();

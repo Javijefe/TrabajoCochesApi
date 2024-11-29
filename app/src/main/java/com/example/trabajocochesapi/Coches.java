@@ -12,6 +12,10 @@ public class Coches implements Serializable {
     public String imagen;
     public int anyo;
 
+/*
+  Constructor que inicializa un objeto Coches a partir de un objeto CochesResponse.
+  Este constructor se utiliza para convertir los datos obtenidos desde la API.
+   */
     public Coches(CochesResponse cochesResponse){
         this.id=cochesResponse.getId();
         this.marca =cochesResponse.getMarca();
@@ -20,7 +24,10 @@ public class Coches implements Serializable {
         this.anyo =cochesResponse.getAnyo();
         this.precio =cochesResponse.getPrecio();
     }
-
+    /*
+  Constructor que inicializa un objeto Coches a partir de el objeto CocheEntity.
+ Este constructor se utiliza para convertir datos almacenados localmente (en la base de datos).
+     */
     public Coches(CocheEntity cocheEntity) {
         this.id=cocheEntity.getId();
         this.marca=cocheEntity.getMarca();
