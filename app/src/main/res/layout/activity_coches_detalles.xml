@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CochesDetalles">
+
+    <ImageView
+        android:id="@+id/imagen2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/marca2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/imagen2"
+        app:layout_constraintStart_toStartOf="@+id/imagen2"
+        app:layout_constraintTop_toBottomOf="@+id/imagen2" />
+
+    <TextView
+        android:id="@+id/modelo"
+        android:layout_width="64dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/marca2"
+        app:layout_constraintStart_toStartOf="@+id/marca2"
+        app:layout_constraintTop_toBottomOf="@+id/marca2" />
+
+    <TextView
+        android:id="@+id/precio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/modelo"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@+id/modelo"
+        app:layout_constraintTop_toBottomOf="@+id/modelo" />
+
+    <TextView
+        android:id="@+id/anyo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/precio"
+        app:layout_constraintStart_toStartOf="@+id/precio"
+        app:layout_constraintTop_toBottomOf="@+id/precio" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
